@@ -29,18 +29,24 @@ const ConnectWallet = () => {
 
   if (mounted && userSession.isUserSignedIn()) {
     return (
-      <div>
-        <button className="Connect" onClick={disconnect}>
+      <div className="container flex flex-wrap justify-between mx-auto">
+        <button
+        type="button"
+        className="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+        onClick={disconnect}
+        >
           Disconnect Wallet
         </button>
-        <p>mainnet: {userSession.loadUserData().profile.stxAddress.mainnet}</p>
-        <p>testnet: {userSession.loadUserData().profile.stxAddress.testnet}</p>
       </div>
     );
   }
 
   return (
-    <button className="Connect" onClick={authenticate}>
+    <button
+    type="button"
+    className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+    onClick={authenticate}
+    >
       Connect Wallet
     </button>
   );
