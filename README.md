@@ -1,32 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Created for Stacks Clarity Camp to demo how to make various API calls from the client :phone:
 
-## Getting Started
+Run locally:
 
-First, run the development server:
-
-```bash
-npm run dev
+```
+npm install
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Stacks API docs :notebook:
+- [https://docs.hiro.so/api](https://docs.hiro.so/api)
+- [https://hirosystems.github.io/stacks-blockchain-api/client/](https://hirosystems.github.io/stacks-blockchain-api/client/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Further details for each example :mag:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+All requests are submitted `onClick` of corresponding button.
 
-## Learn More
+Example 1:
 
-To learn more about Next.js, take a look at the following resources:
+Requires user login via `ConnectWallet` using the [Hiro Wallet](https://wallet.hiro.so/) browser extension. The button is set to display conditionally depending on whether a user is logged in.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Makes a `fetch()` request to Non-Fungible Token holdings API endpoint and retrieves the list of nonfungible tokens owned by the given principal. `principal` is a required query parameter for this endpoint which is passed via string interpolation.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Results array is then set with `useState` for display on the page.
 
-## Deploy on Vercel
+Example 2:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Makes a `fetch()` request to fungible tokens metadata list endpoint and retrieves list of fungible tokens on Stacks with their metadata.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Results array is then set with `useState` for display on the page. This endpoint has an optional `limit` query parameter, however we are grabbing all results and demonstrating how to limit the array elements displayed using `slice`.
+
+Example 3:
+
+Makes a `fetch()` request to get recent transactions endpoint and retrieves list of recently mined transactions. This endpoint has an optional `limit` query parameter, here we set a limit of 5 via the query directly.
+
+Results array is then set with `useState` for display on the page.
+
+Example 4:
+
+Uses `websocket` to subscribe to mempool updates. This is sent every time a new transaction is submitted.
+
+We then grab the `event ID` from the results and set with `useState` for display on the page. This will auto update to display a new `event ID` each time a new tx is submitted and read by the subscription.
