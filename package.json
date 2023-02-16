@@ -1,0 +1,24 @@
+{
+  "name": "api-calls",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "next dev",
+    "build": "next build",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@stacks/connect": "^7.1.1",
+    "@stacks/connect-react": "^21.0.1",
+    "@stacks/network": "^6.1.0",
+    "@stacks/transactions": "^6.1.0",
+    "@use-it/interval": "^1.0.0",
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.23.0",
+    "eslint-config-next": "12.2.5"
+  }
+}
